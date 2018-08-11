@@ -1,5 +1,7 @@
 package com.example.hannahpaulson.suggestions
 
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -51,14 +53,21 @@ class IngredientInput : AppCompatActivity() {
                 if (response != null) {
                     Log.d("MainActivity", "" + response.body())
                     Log.d("Hannah", "" + response.raw().request().url())
-                    Toast.makeText(this@IngredientInput, "List of Category  \n  " + response.code(), Toast.LENGTH_LONG).show()
+                    sendToDisplayPage(response.body())
                 }
             }
 
             override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
                 Log.d("REQUEST FAIL ", call.request().url().toString() + "")
-                Log.d("REQUEST FAIL ", call.toString() + "")
+                Log.d("REQUEST FAIL ", t.toString() + "")
             }
         })
     }
+
+    private fun sendToDisplayPage(body: SearchResponse?) {
+        val intent = Intent(this, DisplayIngredients::class.java)
+        intent.putExtra("keyIdentifier", body)
+        startActivity(intent)
+    }
 }
+

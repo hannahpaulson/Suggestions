@@ -19,9 +19,12 @@
             android:orientation="vertical" />
     </ScrollView>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+    <TextView
+        android:id="@+id/item_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="27dp"
+        tools:layout_editor_absoluteY="29dp" />
+
 </android.support.constraint.ConstraintLayout>
